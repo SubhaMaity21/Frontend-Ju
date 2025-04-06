@@ -1,71 +1,249 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dash</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmuter - AI Powered Farming</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --primary-color: #2e7d32;
+      --secondary-color: #1b5e20;
+      --accent-color: #4caf50;
+      --dark-color: #1a1a1a;
+      --light-color: #f8f9fa;
+    }
+    
+    body {
+      background-color: #f0f7f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .navbar {
+      background: var(--dark-color) !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 0.8rem 1.5rem;
+    }
+    
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--light-color) !important;
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar-brand img {
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+      margin-right: 12px;
+      transition: transform 0.3s;
+    }
+    
+    .navbar-brand:hover img {
+      transform: rotate(10deg);
+    }
+    
+    .navbar-nav .nav-link {
+      color: var(--light-color);
+      font-weight: 600;
+      transition: all 0.3s;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+    }
+    
+    .navbar-nav .nav-link:hover {
+      color: var(--accent-color);
+    }
+    
+    .body {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      align-items: center;
+    }
+    
+    .hero-section {
+      text-align: center;
+      width: 100%;
+      max-width: 800px;
+      margin-bottom: 3rem;
+      padding: 2rem 1rem;
+    }
+    
+    .main_header {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .hero-section p {
+      font-size: 1.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 2rem;
+    }
+    
+    .features-section {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 1rem;
+    }
+    
+    .card {
+      height: 100%;
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+    
+    .card-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .card-title {
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 1rem;
+      font-size: 1.35rem;
+    }
+    
+    .card-text {
+      color: #555;
+      flex-grow: 1;
+    }
+    
+    .feature-icon {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1.2rem;
+      transition: transform 0.3s;
+    }
+    
+    .card:hover .feature-icon {
+      transform: scale(1.2);
+    }
+    
+    .btn {
+      padding: 0.7rem 1.5rem;
+      font-weight: 600;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      margin-top: 1rem;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+    }
+  </style>
 </head>
 <body>
-    <div class="main">
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="./assests/leaf-svgrepo-com.svg" alt="Logo" width="80" height="44" class="d-inline-block align-text-top ">
-            Farmuter
-          </a>
-          <div>
-            <a href="./login.html"><button class="btn btn-outline-primary">Login</button></a>
-            <a href="./register.html"><button class="btn btn-outline-primary">Register</button></a>
-        </div>
-      </nav>
-    </div>
-    <div class="body">
-      <div class="left">
-        <h1 class="main_header">Farmuter</h1>
-        <p>Your gateway to AI powered farming</p>
-
-      </div>
-      <div class="right">
-        <div class="card text-center justify-content-evenly" style="width: 18rem;">
-        <img src="" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">AI powered soil analysis</h5>
-          <p class="card-text">Analyzes user-provided descriptions of crop conditions (from visual observations) to identify potential issues.</p>
-          <a href="#" class="btn btn-primary">Analyze soil</a>
-        </div>
-      </div>
-
-      <div class="card text-center justify-content-evenly" style="width: 18rem;">
-        <img src="" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Right Time Call (Harvest Estimation)</h5>
-          <p class="card-text">AI predicts the best harvesting time based on real-time plant samples.</p>
-          <a href="#" class="btn btn-primary">Crop Estimation</a>
-        </div>
-      </div>
-
-      <div class="card text-center justify-content-evenly" style="width: 18rem;">
-        <img src="/assests/img_3.webp" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Weather based alerts</h5>
-          <p class="card-text">Alerts for climate risks are sent via a mobile app or website.</p>
-          <a href="#" class="btn btn-primary">Alerts</a>
-        </div>
-      </div>
-      <div class="card text-center justify-content-evenly" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Crop Health Detection</h5>
-          <p class="card-text">Trained AI detects crop condition by given pictures from user.</p>
-          <a href="#" class="btn btn-primary">Detect Crop Condition</a>
-        </div>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="./assests/leaf-svgrepo-com.svg" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+        Farmuter
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item" id="login-nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt me-1"></i> Login</a>
+          </li>
+          <li class="nav-item" id="register-nav-item">
+            <a class="nav-link" href="register.html"><i class="fas fa-user-plus me-1"></i> Register</a>
+          </li>
+          <li class="nav-item d-none" id="profile-nav-item">
+            <a class="nav-link" href="profile.html"><i class="fas fa-user me-1"></i> My Profile</a>
+          </li>
+          <li class="nav-item d-none" id="logout-nav-item">
+            <a class="nav-link" href="#" id="logout-link"><i class="fas fa-sign-out-alt me-1"></i> Logout</a>
+          </li>
+        </ul>
       </div>
     </div>
-        
-    </div>
+  </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+  <div class="body container">
+    <section class="hero-section">
+      <h1 class="main_header">Farmuter</h1>
+      <p>Your gateway to AI powered farming</p>
+      <a href="profile.html" class="btn btn-primary btn-lg"><i class="fas fa-seedling me-2"></i> Get Started</a>
+    </section>
+
+    <section class="features-section">
+      <a href="Soil.html" class="text-decoration-none">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <i class="fas fa-microscope feature-icon"></i>
+            <h5 class="card-title">AI Powered Soil Analysis</h5>
+            <p class="card-text">Analyzes user-provided descriptions of crop conditions to identify potential issues.</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="text-decoration-none">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <i class="fas fa-calendar-check feature-icon"></i>
+            <h5 class="card-title">Harvest Estimation</h5>
+            <p class="card-text">AI predicts the best harvesting time based on real-time plant samples.</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="text-decoration-none">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <i class="fas fa-cloud-sun feature-icon"></i>
+            <h5 class="card-title">Weather Based Alerts</h5>
+            <p class="card-text">Alerts for climate risks are sent via a mobile app or website.</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="image.html" class="text-decoration-none">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <i class="fas fa-leaf feature-icon"></i>
+            <h5 class="card-title">Crop Health Detection</h5>
+            <p class="card-text">Trained AI detects crop condition by given pictures from user.</p>
+          </div>
+        </div>
+      </a>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

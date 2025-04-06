@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload | Farmuter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style3.css">
+    <style>
+      :root {
+        --primary-color: #2e7d32;
+        --secondary-color: #1b5e20;
+        --accent-color: #4caf50;
+        --dark-color: #1a1a1a;
+        --light-color: #f8f9fa;
+      }
+      
+      body {
+        background-color: #f0f7f0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      
+      .navbar {
+        background: var(--dark-color) !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 0.8rem 1.5rem;
+      }
+      
+      .navbar-brand {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--light-color) !important;
+        display: flex;
+        align-items: center;
+      }
+      
+      .navbar-brand img {
+        filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+        margin-right: 12px;
+        transition: transform 0.3s;
+      }
+      
+      .navbar-brand:hover img {
+        transform: rotate(10deg);
+      }
+      
+      .box {
+        display: flex;
+        gap: 1.5rem;
+      }
+      
+      .box a {
+        color: var(--light-color);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        padding: 0.5rem 0.8rem;
+        border-radius: 6px;
+        transition: all 0.3s;
+        position: relative;
+      }
+      
+      .box a:hover {
+        color: var(--accent-color);
+      }
+      
+      .box a:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: -3px;
+        left: 0;
+        background-color: var(--accent-color);
+        transition: width 0.3s;
+      }
+      
+      .box a:hover:after {
+        width: 100%;
+      }
+      
+      .card {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      }
+      
+      .card-header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+        padding: 1.2rem;
+        border: none;
+      }
+      
+      .card-header h4 {
+        font-weight: 700;
+        font-size: 1.4rem;
+      }
+      
+      .card-body {
+        padding: 2rem;
+        background-color: #ffffff;
+      }
+      
+      .form-label {
+        font-weight: 600;
+        color: var(--dark-color);
+        margin-bottom: 0.5rem;
+      }
+      
+      .form-control {
+        padding: 0.8rem;
+        border-radius: 8px;
+        border: 2px solid #e0e0e0;
+        transition: all 0.3s;
+      }
+      
+      .form-control:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+      }
+      
+      .btn {
+        padding: 0.7rem 1.5rem;
+        font-weight: 600;
+        border-radius: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s;
+      }
+      
+      .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+      
+      .btn-primary:hover {
+        background-color: var(--secondary-color);
+        border-color: var (--secondary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+      }
+      
+      .btn-secondary {
+        background-color: #9e9e9e;
+        border-color: #9e9e9e;
+      }
+      
+      .btn-secondary:hover {
+        background-color: #757575;
+        border-color: #757575;
+        transform: translateY(-2px);
+      }
+      
+      .progress {
+        height: 10px;
+        border-radius: 10px;
+        background-color: #e0e0e0;
+      }
+      
+      .progress-bar {
+        background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        border-radius: 10px;
+      }
+      
+      #imagePreview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 200px;
+        background-color: #f5f5f5;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        border: 2px dashed #ccc;
+        overflow: hidden;
+      }
+      
+      #imagePreview img {
+        max-width: 100%;
+        max-height: 300px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+      
+      .form-text {
+        color: #757575;
+        font-style: italic;
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="./assests/leaf-svgrepo-com.svg" alt="Logo" width="40" height="40"
+                    class="d-inline-block align-text-top">
+                Farmuter
+            </a>
+            <div class="box">
+                <a href="index.html"><i class="fas fa-home me-1"></i> Home</a>
+                <a href="image.html" class="active"><i class="fas fa-leaf me-1"></i> Crop Detection</a>
+                <a href="Soil.html"><i class="fas fa-microscope me-1"></i> Soil Analysis</a>
+                <a href="about.html"><i class="fas fa-info-circle me-1"></i> About Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <div class="card shadow">
+                    <div class="card-header text-white">
+                        <h4 class="mb-0"><i class="fas fa-cloud-upload-alt me-2"></i> Image Upload</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="imageUploadForm">
+                            <!-- Image preview -->
+                            <div id="imagePreview" class="mb-4">
+                                <span class="preview-placeholder text-muted">Image preview will appear here</span>
+                            </div>
+                            
+                            <!-- File Input -->
+                            <div class="mb-4">
+                                <label for="imageInput" class="form-label"><i class="fas fa-file-image me-2"></i>Select Image</label>
+                                <input class="form-control" type="file" id="imageInput" accept="image/*">
+                                <div class="form-text mt-2">Supported formats: JPG, PNG, GIF (Max size: 5MB)</div>
+                            </div>
+                            
+                            <!-- Image Details -->
+                            <div class="mb-4">
+                                <label for="imageTitle" class="form-label"><i class="fas fa-heading me-2"></i>Image Title</label>
+                                <input type="text" class="form-control" id="imageTitle" placeholder="Enter a title for your image">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="imageDescription" class="form-label"><i class="fas fa-align-left me-2"></i>Description</label>
+                                <textarea class="form-control" id="imageDescription" rows="3" placeholder="Add a description (optional)"></textarea>
+                            </div>
+                            
+                            <!-- Progress bar -->
+                            <div class="upload-progress mb-4" id="uploadProgress" style="display: none;">
+                                <label class="form-label"><i class="fas fa-spinner me-2"></i>Upload Progress</label>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Submit button -->
+                            <div class="mt-4 d-grid gap-3 d-md-flex justify-content-md-end">
+                                <button type="button" class="btn btn-secondary me-md-2" id="resetBtn">
+                                    <i class="fas fa-undo me-2"></i>Reset
+                                </button>
+                                <button type="submit" class="btn btn-primary" id="uploadBtn">
+                                    <i class="fas fa-upload me-2"></i>Upload Image
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script>
+      // Preview image when file is selected
+      document.getElementById('imageInput').addEventListener('change', function(event) {
+          const file = event.target.files[0];
+          const previewContainer = document.getElementById('imagePreview');
+          
+          // Clear previous preview
+          previewContainer.innerHTML = '';
+          
+          if (file && file.type.startsWith('image/')) {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  const img = document.createElement('img');
+                  img.src = e.target.result;
+                  previewContainer.appendChild(img);
+              }
+              reader.readAsDataURL(file);
+          } else {
+              previewContainer.innerHTML = '<span class="preview-placeholder">Please select a valid image file</span>';
+          }
+      });
+      
+      // Form submission
+      document.getElementById('imageUploadForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Get form values
+          const imageFile = document.getElementById('imageInput').files[0];
+          const imageTitle = document.getElementById('imageTitle').value;
+          
+          // Validate
+          if (!imageFile) {
+              alert('Please select an image file');
+              return;
+          }
+          
+          if (!imageTitle.trim()) {
+              alert('Please enter an image title');
+              return;
+          }
+          
+          // Show progress bar
+          const progressBar = document.querySelector('.progress-bar');
+          const progressContainer = document.getElementById('uploadProgress');
+          progressContainer.style.display = 'block';
+          
+          // Simulate upload (in a real application, this would be an actual AJAX request)
+          let progress = 0;
+          const interval = setInterval(() => {
+              progress += 5;
+              progressBar.style.width = progress + '%';
+              progressBar.setAttribute('aria-valuenow', progress);
+              
+              if (progress >= 100) {
+                  clearInterval(interval);
+                  // Show success message
+                  setTimeout(() => {
+                      alert('Image uploaded successfully!');
+                      resetForm();
+                  }, 500);
+              }
+          }, 100);
+      });
+      
+      // Reset form
+      document.getElementById('resetBtn').addEventListener('click', resetForm);
+      
+      function resetForm() {
+          document.getElementById('imageUploadForm').reset();
+          document.getElementById('imagePreview').innerHTML = '<span class="preview-placeholder">Image preview will appear here</span>';
+          document.getElementById('uploadProgress').style.display = 'none';
+          document.querySelector('.progress-bar').style.width = '0%';
+      }
+    </script>
+</body>
+</html>

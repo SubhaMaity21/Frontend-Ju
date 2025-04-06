@@ -1,11 +1,284 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Farmuter</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --primary-color: #2e7d32;
+      --secondary-color: #1b5e20;
+      --accent-color: #4caf50;
+      --dark-color: #1a1a1a;
+      --light-color: #f8f9fa;
+    }
+    
+    body {
+      background-color: #f0f7f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .navbar {
+      background: var(--dark-color) !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 0.8rem 1.5rem;
+    }
+    
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--light-color) !important;
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar-brand img {
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+      margin-right: 12px;
+      transition: transform 0.3s;
+    }
+    
+    .navbar-brand:hover img {
+      transform: rotate(10deg);
+    }
+    
+    .navbar-nav .nav-link {
+      color: var(--light-color);
+      font-weight: 600;
+      transition: all 0.3s;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+    }
+    
+    .navbar-nav .nav-link:hover {
+      color: var(--accent-color);
+    }
+    
+    .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    
+    .card-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+      padding: 1.2rem;
+      border: none;
+    }
+    
+    .card-header h4 {
+      font-weight: 700;
+      color: white;
+      font-size: 1.4rem;
+      margin-bottom: 0;
+    }
+    
+    .card-body {
+      padding: 2rem;
+      background-color: white;
+    }
+    
+    .form-label {
+      font-weight: 600;
+      color: var(--dark-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-control {
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 2px solid #e0e0e0;
+      transition: all 0.3s;
+      margin-bottom: 1rem;
+    }
+    
+    .form-control:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+    }
+    
+    .btn-primary {
+      padding: 0.7rem 2rem;
+      font-weight: 600;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+    }
+
+    .alert {
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    a:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
+
+    .preview-container {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1.5rem;
+      border: 4px solid white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    #avatar-preview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-color: #e9e9e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
-    
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="./assests/leaf-svgrepo-com.svg" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+        Farmuter
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item" id="login-nav-item">
+            <a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt me-1"></i> Login</a>
+          </li>
+          <li class="nav-item" id="register-nav-item">
+            <a class="nav-link active" href="register.html"><i class="fas fa-user-plus me-1"></i> Register</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card">
+          <div class="card-header text-white">
+            <h4 class="mb-0"><i class="fas fa-user-plus me-2"></i> Create an Account</h4>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-danger d-none" id="error-message"></div>
+            <div class="alert alert-success d-none" id="success-message"></div>
+            
+            <form id="register-form" enctype="multipart/form-data">
+              <div class="preview-container mb-4">
+                <div id="avatar-preview">
+                  <i class="fas fa-user fa-3x"></i>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="fullName" class="form-label"><i class="fas fa-user me-2"></i>Full Name</label>
+                    <input type="text" class="form-control" id="fullName" name="fullName" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="username" class="form-label"><i class="fas fa-at me-2"></i>Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="email" class="form-label"><i class="fas fa-envelope me-2"></i>Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              
+              <div class="mb-3">
+                <label for="password" class="form-label"><i class="fas fa-lock me-2"></i>Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+              
+              <div class="mb-3">
+                <label for="avatar" class="form-label"><i class="fas fa-image me-2"></i>Profile Picture</label>
+                <input type="file" class="form-control" id="avatar" name="avatar" required>
+                <div class="form-text">Choose a square image for best results.</div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="coverImage" class="form-label"><i class="fas fa-panorama me-2"></i>Cover Image (Optional)</label>
+                <input type="file" class="form-control" id="coverImage" name="coverImage">
+                <div class="form-text">Recommended size: 1200×300 pixels</div>
+              </div>
+              
+              <div class="d-grid gap-2 mt-4">
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-user-plus me-2"></i>Create Account
+                </button>
+              </div>
+              
+              <div class="mt-3 text-center">
+                <p>Already have an account? <a href="login.html">Login here</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="register.js"></script>
+  <script>
+    // Image preview functionality
+    document.getElementById('avatar').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          document.getElementById('avatar-preview').innerHTML = `
+            <img src="${event.target.result}" alt="Profile Preview" style="width:100%; height:100%; object-fit:cover;">
+          `;
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
 </body>
 </html>
