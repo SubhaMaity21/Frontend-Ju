@@ -1,0 +1,30 @@
+.left {
+    height:80vh;
+    width: 50vw;
+    /* background-color: red; */
+}
+
+.right {
+    height:80vh;
+    width: 50vw;
+    /* background-color: blue; */
+    display: flex;
+    flex-wrap: wrap;
+}
+.body{
+    display: flex;
+}
+
+.card{
+    margin: auto;
+}
+
+.left h1{
+    font-size: 150px;
+    margin-left: 40px;
+}
+
+.left p {
+    font-size: 50px;
+    margin-left: 40px;
+}
