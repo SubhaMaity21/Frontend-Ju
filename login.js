@@ -1,5 +1,5 @@
 // Base URL for your API
-const API_URL = 'https://backend-ju.vercel.app/api/v1';
+const API_URL = 'https://backend-j.vercel.app/api/v1';
 
 document.addEventListener('DOMContentLoaded', function() {
   const loginForm = document.getElementById('login-form');
